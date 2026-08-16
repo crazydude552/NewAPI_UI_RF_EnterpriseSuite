@@ -94,3 +94,7 @@ Script Path: Verify it says Jenkinsfile.
 Click Save.
 
 Click Build Now on the left menu.
+
+docker stop jenkins-local
+docker rm jenkins-local
+docker run -d --name jenkins-local -p 8085:8080 -p 50000:50000 -v jenkins_home:/var/jenkins_home -u root jenkins/jenkins:lts
