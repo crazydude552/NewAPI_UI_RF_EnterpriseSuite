@@ -4,7 +4,7 @@ Resource         ../../steps/ui_steps/login_ui_steps.resource
 Variables        ../../TestData/staging.yml
 Library          Browser
 
-Suite Setup      New Browser    browser=chromium    headless=False
+Suite Setup      New Browser    browser=chromium    headless=True
 Suite Teardown   Close Browser
 
 *** Test Cases ***
