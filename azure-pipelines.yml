@@ -1,0 +1,38 @@
+trigger:
+  - main
+  - master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: '3.10'
+  displayName: 'Set Python Version'
+
+- script: |
+    python -m pip install --upgrade pip
+    pip install -r requirements.txt
+    rfbrowser init
+  displayName: 'Install Dependencies & Initialize Playwright'
+
+- script: |
+    robot --variablefile config/env_staging.py -d results tests/
+  displayName: 'Run Robot Framework Hybrid Suite'
+  condition: always()
+
+- task: PublishTestResults@2
+  inputs:
+    testResultsFormat: 'JUnit'
+    testResultsFiles: 'results/output.xml'
+    failTaskOnFailedTests: true
+  displayName: 'Publish Test Results'
+  condition: always()
+
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: '$(Build.SourcesDirectory)/results'
+    artifact: 'Robot_Reports'
+  displayName: 'Publish HTML Logs & Reports'
+  condition: always()
