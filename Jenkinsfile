@@ -2,17 +2,11 @@ pipeline {
     agent any
 
     stages {
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
-        }
-
         stage('Install Dependencies') {
             steps {
                 sh '''
-                    python3 -m pip install --upgrade pip
-                    pip install -r requirements.txt
+                    python3 -m pip install --upgrade pip --break-system-packages
+                    pip install -r requirements.txt --break-system-packages
                     rfbrowser init
                 '''
             }
