@@ -6,7 +6,6 @@ pipeline {
             steps {
                 sh '''
                     apt-get update && apt-get install -y python3-pip python3-venv nodejs npm || true
-                    python3 -m pip install --upgrade pip --break-system-packages
                     pip install -r requirements.txt --break-system-packages
                     rfbrowser init
                 '''
