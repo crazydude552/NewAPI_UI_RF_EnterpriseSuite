@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.2 (Python 3.14.6 on win32)" generated="2026-08-16T10:51:52.832802" rpa="false" schemaversion="5">
+<suite id="s1" name="Tests" source="C:\Users\pvmrm\Documents\workspace\RobotFramework_Tutorial\NewAPI_UI_RF_EnterpriseSuite\tests">
+<suite id="s1-s1" name="Api" source="C:\Users\pvmrm\Documents\workspace\RobotFramework_Tutorial\NewAPI_UI_RF_EnterpriseSuite\tests\api">
+<suite id="s1-s1-s1" name="Customer Api" source="C:\Users\pvmrm\Documents\workspace\RobotFramework_Tutorial\NewAPI_UI_RF_EnterpriseSuite\tests\api\customer_api.robot">
+<kw name="Initialize API Session" owner="BaseClient" type="SETUP">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2026-08-16T10:51:52.932107" level="INFO">Creating Session using : alias=api_session, url=https://postman-echo.com, headers={'Content-Type': 'application/json', 'Accept': 'application/json'},                     cookies={}, auth=None, timeout=None, proxies=None, verify=True,                     debug=0 </msg>
+<arg>alias=${alias}</arg>
+<arg>url=${BASE_URL_API}</arg>
+<arg>headers=${DEFAULT_HEADERS}</arg>
+<arg>verify=True</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2026-08-16T10:51:52.931791" elapsed="0.000496"/>
+</kw>
+<status status="PASS" start="2026-08-16T10:51:52.931178" elapsed="0.001187"/>
+</kw>
+<test id="s1-s1-s1-t1" name="Scenario: Ingest Heavy Structural Record Sets Via Bulk POST" line="9">
+<kw name="Given a bulk payload is transmitted containing complete enterprise data" owner="customer_api_steps">
+<kw name="Execute Large Data Submission POST" owner="CustomerClient">
+<kw name="Execute POST Request" owner="BaseClient">
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2026-08-16T10:51:53.146347" level="INFO">POST Request : url=https://postman-echo.com/post 
+ path_url=/post 
+ headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '311'} 
+ body=b'{"batch_id": "BATCH-2026-0812", "total_records": 3, "metadata": {"environment": "Staging", "region": "EU", "tier": "Enterprise"}, "departments": [{"name": "Engineering", "headcount": 142, "code": "ENG-01"}], "records": [{"customer_id": "CUST-1001", "company_name": "Acme Corp"}], "tags": ["performance-tested"]}' 
+ </msg>
+<msg time="2026-08-16T10:51:53.146636" level="INFO">POST Response : url=https://postman-echo.com/post 
+ status=200, reason=OK 
+ headers={'Date': 'Sun, 16 Aug 2026 08:51:53 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'etag': 'W/"36e-IbGppaVCgcTMD2lsE2LTosHdNWc"', 'vary': 'Accept-Encoding', 'x-envoy-upstream-service-time': '5', 'cf-cache-status': 'DYNAMIC', 'Set-Cookie': 'sails.sid=s%3AIwgAR35DPcSjr3A9gdKf05Y-RPF6pOK2.j%2BsjL8VVW5Y2tJL2zLRJOukt%2BQqiyo73%2B5eBlXpsW44; Path=/; HttpOnly, __cf_bm=2OCVwHVfHJXV7M3roVACEcljvquZ9VrVoiS5ptncl.M-1786870313.706427-1.0.1.1-6npvhguSGgk6nO1ogV0MGdX58qYDbh9UkDJvGyKeZbfIDnbdWGOuk9gC_u6y6dH_zAUV3be3BTm0WCyIwTvrCBEhESU3mzNGB9NgyueUrHMTPNK3eWG8E0RzytFNgv.u; HttpOnly; SameSite=None; Secure; Path=/; Domain=postman-echo.com; Expires=Sun, 16 Aug 2026 09:21:53 GMT, _cfuvid=uIwKLvKPrDlf9C3jfwylfTe5fFljcHXk87kdNngWE5g-1786870313.706427-1.0.1.1-qLFHKPJG0T68gNEW_f8.M_QGQT.dod.LPFEw2adZjqs; HttpOnly; SameSite=None; Secure; Path=/; Domain=postman-echo.com', 'Content-Encoding': 'gzip', 'Server': 'cloudflare', 'CF-RAY': 'a2bf3324ad5d2211-BRU'} 
+ body={"args":{},"data":{"batch_id":"BATCH-2026-0812","total_records":3,"metadata":{"environment":"Staging","region":"EU","tier":"Enterprise"},"departments":[{"name":"Engineering","headcount":142,"code":"ENG-01"}],"records":[{"customer_id":"CUST-1001","company_name":"Acme Corp"}],"tags":["performance-tested"]},"files":{},"form":{},"headers":{"host":"postman-echo.com","content-length":"311","user-agent":"python-requests/2.34.2","content-type":"application/json","accept":"application/json","x-forwarded-proto":"https","accept-encoding":"gzip, br"},"json":{"batch_id":"BATCH-2026-0812","total_records":3,"metadata":{"environment":"Staging","region":"EU","tier":"Enterprise"},"departments":[{"name":"Engineering","headcount":142,"code":"ENG-01"}],"records":[{"customer_id":"CUST-1001","company_name":"Acme Corp"}],"tags":["performance-tested"]},"url":"https://postman-echo.com/post"} 
+ </msg>
+<msg time="2026-08-16T10:51:53.146922" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>alias=${alias}</arg>
+<arg>url=${endpoint}</arg>
+<arg>json=${payload}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-08-16T10:51:52.933832" elapsed="0.213145"/>
+</kw>
+<return>
+<value>${response}</value>
+<status status="PASS" start="2026-08-16T10:51:53.147130" elapsed="0.000100"/>
+</return>
+<msg time="2026-08-16T10:51:53.147513" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>/post</arg>
+<arg>${payload_dict}</arg>
+<status status="PASS" start="2026-08-16T10:51:52.933643" elapsed="0.213915"/>
+</kw>
+<return>
+<value>${response}</value>
+<status status="PASS" start="2026-08-16T10:51:53.147640" elapsed="0.000053"/>
+</return>
+<msg time="2026-08-16T10:51:53.147889" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>${payload}</arg>
+<status status="PASS" start="2026-08-16T10:51:52.933463" elapsed="0.214464"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2026-08-16T10:51:53.148807" level="INFO">${API_RESPONSE} = &lt;Response [200]&gt;</msg>
+<arg>${API_RESPONSE}</arg>
+<arg>${response}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2026-08-16T10:51:53.148155" elapsed="0.000724"/>
+</kw>
+<arg>${large_payload}</arg>
+<status status="PASS" start="2026-08-16T10:51:52.933194" elapsed="0.215777"/>
+</kw>
+<kw name="Then the data repository verifies structural integrity of the complex data" owner="customer_api_steps">
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-08-16T10:51:53.150592" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${API_RESPONSE.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-08-16T10:51:53.149875" elapsed="0.000784"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-08-16T10:51:53.151507" level="INFO">${response_json} = {'args': {}, 'data': {'batch_id': 'BATCH-2026-0812', 'total_records': 3, 'metadata': {'environment': 'Staging', 'region': 'EU', 'tier': 'Enterprise'}, 'departments': [{'name': 'Engineering', 'headcoun...</msg>
+<var>${response_json}</var>
+<arg>${API_RESPONSE.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-08-16T10:51:53.150780" elapsed="0.000760"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${response_json['json']['metadata']['environment']}</arg>
+<arg>Staging</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2026-08-16T10:51:53.151656" elapsed="0.001217"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-08-16T10:51:53.153590" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response_json['json']['departments'][0]['headcount']}</arg>
+<arg>142</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-08-16T10:51:53.153031" elapsed="0.000607"/>
+</kw>
+<kw name="Safely Get Nested Value" owner="DataTransformer">
+<msg time="2026-08-16T10:51:53.154067" level="INFO">${tags} = ['performance-tested']</msg>
+<var>${tags}</var>
+<arg>${response_json}</arg>
+<arg>json.tags</arg>
+<arg>${EMPTY}</arg>
+<doc>Safely extracts nested dictionary values given a dot-separated path.
+Example: Safely Get Nested Value  ${response_json}  data.metadata.environment</doc>
+<status status="PASS" start="2026-08-16T10:51:53.153729" elapsed="0.000355"/>
+</kw>
+<kw name="List Should Contain Value" owner="Collections">
+<arg>${tags}</arg>
+<arg>performance-tested</arg>
+<doc>Fails if the ``value`` is not found from ``list``.</doc>
+<status status="PASS" start="2026-08-16T10:51:53.154202" elapsed="0.000251"/>
+</kw>
+<status status="PASS" start="2026-08-16T10:51:53.149480" elapsed="0.005018"/>
+</kw>
+<doc>Validates JSON serialization and nested assertions on bulk POST.</doc>
+<tag>API</tag>
+<tag>Bulk</tag>
+<tag>Regression</tag>
+<status status="PASS" start="2026-08-16T10:51:52.932432" elapsed="0.222353"/>
+</test>
+<doc>API Test Suite for Customer Endpoints</doc>
+<status status="PASS" start="2026-08-16T10:51:52.861425" elapsed="0.293812"/>
+</suite>
+<status status="PASS" start="2026-08-16T10:51:52.860466" elapsed="0.295237"/>
+</suite>
+<suite id="s1-s2" name="Ui" source="C:\Users\pvmrm\Documents\workspace\RobotFramework_Tutorial\NewAPI_UI_RF_EnterpriseSuite\tests\ui">
+<suite id="s1-s2-s1" name="Login Ui" source="C:\Users\pvmrm\Documents\workspace\RobotFramework_Tutorial\NewAPI_UI_RF_EnterpriseSuite\tests\ui\login_ui.robot">
+<kw name="New Browser" owner="Browser" type="SETUP">
+<msg time="2026-08-16T10:51:53.331278" level="INFO">{"browser": "chromium", "headless": false, "chromiumSandbox": false, "devtools": false, "handleSIGHUP": true, "handleSIGINT": true, "handleSIGTERM": true, "slowMo": 0.0, "timeout": 30000.0, "tracesDir": "C:\\Users\\pvmrm\\Documents\\workspace\\RobotFramework_Tutorial\\NewAPI_UI_RF_EnterpriseSuite\\results\\browser\\traces\\temp\\7fe2e2d9-1096-4a9f-bec4-57b29031874a"}</msg>
+<msg time="2026-08-16T10:51:54.133345" level="INFO">Starting Browser process C:\Users\pvmrm\Documents\workspace\RobotFramework_Tutorial\NewAPI_UI_RF_EnterpriseSuite\.venv\Lib\site-packages\Browser\wrapper\index.js using at 127.0.0.1:64869</msg>
+<msg time="2026-08-16T10:51:55.648589" level="INFO">Successfully created browser with options: {"browser":"chromium","headless":false,"chromiumSandbox":false,"devtools":false,"handleSIGHUP":true,"handleSIGINT":true,"handleSIGTERM":true,"slowMo":0,"timeout":30000,"tracesDir":"C:\\Users\\pvmrm\\Documents\\workspace\\RobotFramework_Tutorial\\NewAPI_UI_RF_EnterpriseSuite\\results\\browser\\traces\\temp\\7fe2e2d9-1096-4a9f-bec4-57b29031874a"}</msg>
+<arg>browser=chromium</arg>
+<arg>headless=False</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Create a new playwright Browser with specified options.</doc>
+<status status="PASS" start="2026-08-16T10:51:53.330534" elapsed="2.318323"/>
+</kw>
+<test id="s1-s2-s1-t1" name="Scenario: Successful Platform Authentication Via UI" line="11">
+<kw name="Given the user navigates to the portal login page" owner="login_ui_steps">
+<kw name="Navigate To Login Page" owner="LoginPage">
+<kw name="New Page" owner="Browser">
+<msg time="2026-08-16T10:51:56.040576" level="INFO">Successfully initialized new page object and opened url: https://www.saucedemo.com</msg>
+<msg time="2026-08-16T10:51:56.040698" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
+<arg>${BASE_URL_UI}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Open a new Page.</doc>
+<status status="PASS" start="2026-08-16T10:51:55.663729" elapsed="0.377148"/>
+</kw>
+<status status="PASS" start="2026-08-16T10:51:55.663297" elapsed="0.377751"/>
+</kw>
+<status status="PASS" start="2026-08-16T10:51:55.662573" elapsed="0.378543"/>
+</kw>
+<kw name="When authenticates using enterprise credentials" owner="login_ui_steps">
+<kw name="Fill Login Form" owner="LoginPage">
+<kw name="Fill Text" owner="Browser">
+<msg time="2026-08-16T10:51:56.044178" level="INFO">Fills the text 'standard_user' in the given field.</msg>
+<arg>${USERNAME_INPUT}</arg>
+<arg>${username}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2026-08-16T10:51:56.043391" elapsed="0.099855"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2026-08-16T10:51:56.144329" level="INFO">Fills the text 'secret_sauce' in the given field.</msg>
+<arg>${PASSWORD_INPUT}</arg>
+<arg>${password}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2026-08-16T10:51:56.143522" elapsed="0.019963"/>
+</kw>
+<kw name="Click" owner="Browser">
+<msg time="2026-08-16T10:51:56.164716" level="INFO">Clicks the element 'css=#login-button'.</msg>
+<arg>${LOGIN_BUTTON}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2026-08-16T10:51:56.163960" elapsed="0.179307"/>
+</kw>
+<arg>${credentials['username']}</arg>
+<arg>${credentials['password']}</arg>
+<status status="PASS" start="2026-08-16T10:51:56.041955" elapsed="0.301553"/>
+</kw>
+<arg>${auth_credentials}</arg>
+<status status="PASS" start="2026-08-16T10:51:56.041511" elapsed="0.302099"/>
+</kw>
+<kw name="Then the system grants access to the active dashboard" owner="login_ui_steps">
+<kw name="Verify Successful Dashboard Load" owner="LoginPage">
+<kw name="Get Text" owner="Browser">
+<msg time="2026-08-16T10:51:56.393362" level="INFO">Text: ['Swag Labs']</msg>
+<arg>${DASHBOARD_HEADER}</arg>
+<arg>contains</arg>
+<arg>Swag Labs</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<status status="PASS" start="2026-08-16T10:51:56.344698" elapsed="0.048840"/>
+</kw>
+<status status="PASS" start="2026-08-16T10:51:56.344464" elapsed="0.049259"/>
+</kw>
+<status status="PASS" start="2026-08-16T10:51:56.344079" elapsed="0.049979"/>
+</kw>
+<msg time="2026-08-16T10:51:56.417470" level="INFO">Switching context to context=e2d2baa5-2939-4be4-aac4-fda5181e8165 in CURRENT</msg>
+<msg time="2026-08-16T10:51:56.425618" level="INFO">Successfully changed active context: context=e2d2baa5-2939-4be4-aac4-fda5181e8165</msg>
+<msg time="2026-08-16T10:51:56.450785" level="INFO">Successfully closed Context</msg>
+<doc>Validates UI user login against staging environment.</doc>
+<tag>Smoke</tag>
+<tag>UI</tag>
+<status status="PASS" start="2026-08-16T10:51:55.649079" elapsed="0.745705"/>
+</test>
+<kw name="Close Browser" owner="Browser" type="TEARDOWN">
+<msg time="2026-08-16T10:51:56.742678" level="INFO">Closed browser</msg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-08-16T10:51:56.453882" elapsed="0.289038"/>
+</kw>
+<doc>UI Test Suite for Customer Portal Authentication</doc>
+<status status="PASS" start="2026-08-16T10:51:53.157142" elapsed="3.585872"/>
+</suite>
+<status status="PASS" start="2026-08-16T10:51:53.156103" elapsed="3.595154"/>
+</suite>
+<status status="PASS" start="2026-08-16T10:51:52.834167" elapsed="3.918228"/>
+</suite>
+<statistics>
+<total>
+<stat pass="2" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">API</stat>
+<stat pass="1" fail="0" skip="0">Bulk</stat>
+<stat pass="1" fail="0" skip="0">Regression</stat>
+<stat pass="1" fail="0" skip="0">Smoke</stat>
+<stat pass="1" fail="0" skip="0">UI</stat>
+</tag>
+<suite>
+<stat name="Tests" id="s1" pass="2" fail="0" skip="0">Tests</stat>
+<stat name="Api" id="s1-s1" pass="1" fail="0" skip="0">Tests.Api</stat>
+<stat name="Customer Api" id="s1-s1-s1" pass="1" fail="0" skip="0">Tests.Api.Customer Api</stat>
+<stat name="Ui" id="s1-s2" pass="1" fail="0" skip="0">Tests.Ui</stat>
+<stat name="Login Ui" id="s1-s2-s1" pass="1" fail="0" skip="0">Tests.Ui.Login Ui</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
