@@ -1,16 +1,13 @@
 pipeline {
-    agent {
-        docker {
-            image 'mcr.microsoft.com/playwright:v1.40.0-jammy'
-        }
-    }
+    agent any
 
     stages {
         stage('Install Dependencies') {
             steps {
                 sh '''
-                    python3 -m pip install --upgrade pip
-                    pip install -r requirements.txt
+                    apt-get update && apt-get install -y python3-pip python3-venv nodejs npm || true
+                    python3 -m pip install --upgrade pip --break-system-packages
+                    pip install -r requirements.txt --break-system-packages
                     rfbrowser init
                 '''
             }
