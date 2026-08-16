@@ -1,0 +1,24 @@
+auth_credentials:
+  username: "standard_user"
+  password: "secret_sauce"
+
+customer_query:
+  id: "CUST-1001"
+  include_profile: "true"
+
+large_payload:
+  batch_id: "BATCH-2026-0812"
+  total_records: 3
+  metadata:
+    environment: "Staging"
+    region: "EU"
+    tier: "Enterprise"
+  departments:
+    - name: "Engineering"
+      headcount: 142
+      code: "ENG-01"
+  records:
+    - customer_id: "CUST-1001"
+      company_name: "Acme Corp"
+  tags:
+    - "performance-tested"
